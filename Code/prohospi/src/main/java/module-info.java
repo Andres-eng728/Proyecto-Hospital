@@ -1,6 +1,7 @@
 module co.edu.uniquindio.prohospi {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
 
 
     exports co.edu.uniquindio.prohospi.Model;

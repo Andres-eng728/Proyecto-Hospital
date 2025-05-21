@@ -20,16 +20,16 @@ public class SeleccionRolViewController {
             cargarLogin("paciente");
         }
 
-        private void cargarLogin(String rol) throws Exception {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/prohospi/Login.fxml"));
-            Parent root = loader.load();
+    private void cargarLogin(String rol) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/prohospi/Login.fxml"));
+        Parent root = loader.load();
 
-            LoginViewController loginController = loader.getController();
-            loginController.setRol(rol); // Pasamos el rol al login
+        LoginViewController loginController = loader.getController();
+        loginController.setRol(rol); // Pasamos el rol al login
 
-            Stage stage = new Stage();
-            stage.setTitle("Login - " + rol);
-            stage.setScene(new Scene(root));
-            stage.show();
-        }
+        Stage stage = new Stage();
+        stage.setTitle("Login - " + rol);
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

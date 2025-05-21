@@ -1,9 +1,14 @@
 package co.edu.uniquindio.prohospi.ViewController;
 
+import co.edu.uniquindio.prohospi.Controller.AdministradorController;
+import co.edu.uniquindio.prohospi.Controller.MedicoController;
+import co.edu.uniquindio.prohospi.Controller.PacienteController;
 import javafx.fxml.FXML;
-import javafx.scene.control.PasswordField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
+import javafx.stage.Stage;
 
 public class LoginViewController {
 
@@ -13,25 +18,51 @@ public class LoginViewController {
     @FXML
     private PasswordField contrasenaField;
 
+    private String rol;
+
+    private AdministradorController adminController = new AdministradorController();
+    private MedicoController medicoController = new MedicoController();
+    private PacienteController pacienteController = new PacienteController();
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    private void cargarVista(String ruta, String titulo, Stage stage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+        stage.setScene(new Scene(loader.load()));
+        stage.setTitle(titulo);
+        stage.show();
+    }
+
+
+
     @FXML
-    private void iniciarSesion() {
+    public void iniciarSesion() throws Exception {
+        // Aquí iría tu lógica de autenticación real
         String usuario = usuarioField.getText();
         String contrasena = contrasenaField.getText();
-
-        if (usuario.equals("admin") && contrasena.equals("1234")) {
-            mostrarAlerta("Inicio de sesión exitoso", "Bienvenido, " + usuario);
-        } else {
-            mostrarAlerta("Error", "Usuario o contraseña incorrectos");
+        Stage stage = new Stage();
+        switch (rol) {
+            case "administrador":
+                if (adminController.autenticar(usuario, contrasena)) {
+                    cargarVista("/co/edu/uniquindio/prohospi/Admin.fxml", "Panel Administrador", stage);
+                }
+                break;
+            case "medico":
+                if (medicoController.autenticarMedico(usuario, contrasena)) {
+                    cargarVista("/co/edu/uniquindio/prohospi/Medico.fxml", "Panel Médico", stage);
+                }
+                break;
+            case "paciente":
+                if (pacienteController.autenticarPaciente(usuario, contrasena)) {
+                    cargarVista("/co/edu/uniquindio/prohospi/Paciente.fxml", "Panel Paciente", stage);
+                }
+                break;
         }
-    }
 
-    private void mostrarAlerta(String titulo, String mensaje) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
+        ((Stage) usuarioField.getScene().getWindow()).close();
+
+
+
     }
 }
-
-

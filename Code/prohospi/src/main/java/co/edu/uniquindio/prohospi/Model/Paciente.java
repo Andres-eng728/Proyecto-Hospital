@@ -1,21 +1,39 @@
 package co.edu.uniquindio.prohospi.Model;
 
-public class Paciente extends Persona implements InterfazCitable, InterfazHistorial {
-    private HistorialMedico historial;
+import java.util.ArrayList;
+import java.util.List;
 
-    public Paciente(String nombre, String identificacion, String correo) {
+public class Paciente extends Persona implements  InterfazHistorial {
+
+    private HistorialMedico historial;
+    private String usuarioPaciente;
+    private String contrasenaPaciente;
+    private List<CitaMedica> citasProgramadas;
+    private List<String> notificaciones;
+
+    public Paciente(String nombre, String identificacion, String correo, String contrasenaPaciente,String usuarioPaciente) {
         super(nombre, identificacion, correo);
         this.historial = new HistorialMedico();
+        this.usuarioPaciente = usuarioPaciente;
+        this.contrasenaPaciente = contrasenaPaciente;
+        this.citasProgramadas = new ArrayList<>();
+        this.notificaciones = new ArrayList<>();
     }
 
-    @Override
+    public void actualizarDatos(String nuevoNombre, String nuevoEmail) {
+        setNombre(nuevoNombre);
+        setCorreo(nuevoEmail);
+    }
+
     public void solicitarCita(CitaMedica cita) {
-        System.out.println("Cita solicitada por el paciente: " + nombre);
+        citasProgramadas.add(cita);
+        notificaciones.add("Cita médica programada para el día " + cita.getFechaHora());
     }
 
-    @Override
     public void cancelarCita(CitaMedica cita) {
-        System.out.println("Cita cancelada por el paciente: " + nombre);
+        if (citasProgramadas.remove(cita)) {
+            notificaciones.add("La cita médica para el día " + cita.getFechaHora() + " ha sido cancelada.");
+        }
     }
 
     @Override
@@ -26,5 +44,53 @@ public class Paciente extends Persona implements InterfazCitable, InterfazHistor
 
     public HistorialMedico getHistorial() {
         return historial;
+    }
+
+    public void setHistorial(HistorialMedico historial) {
+        this.historial = historial;
+    }
+
+    public String getUsuarioPaciente() {
+        return usuarioPaciente;
+    }
+
+    public void setUsuarioPaciente(String usuarioPaciente) {
+        this.usuarioPaciente = usuarioPaciente;
+    }
+
+    public String getContrasenaPaciente() {
+        return contrasenaPaciente;
+    }
+
+    public void setContrasenaPaciente(String contrasenaPaciente) {
+        this.contrasenaPaciente = contrasenaPaciente;
+    }
+
+    public List<CitaMedica> getCitasProgramadas() {
+        return citasProgramadas;
+    }
+
+    public void setCitasProgramadas(List<CitaMedica> citasProgramadas) {
+        this.citasProgramadas = citasProgramadas;
+    }
+
+    public List<String> getNotificaciones() {
+        return notificaciones;
+    }
+
+    public void setNotificaciones(List<String> notificaciones) {
+        this.notificaciones = notificaciones;
+    }
+
+    public void verNotificaciones() {
+        if (notificaciones.isEmpty()) {
+            System.out.println("No tienes notificaciones nuevas.");
+        } else {
+            System.out.println("Tus notificaciones:");
+            for (String nota : notificaciones) {
+                System.out.println("- " + nota);
+            }
+            notificaciones.clear(); // Limpia después de ver
+        }
     }
 }
