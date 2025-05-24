@@ -5,17 +5,17 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="339.0" prefWidth="532.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="co.edu.uniquindio.prohospi.ViewController.AdministradorViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.prohospi.ViewController.AdministradorViewController">
 
     <top>
         <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 20px;" text="Panel Administrador - Hospital UQ" BorderPane.alignment="CENTER" />
     </top>
 
     <center>
-        <VBox alignment="CENTER" prefHeight="170.0" prefWidth="492.0" spacing="15">
-            <Button fx:id="btngespac" text="Gestionar pacientes" />
-            <Button fx:id="btngesmed" text="Gestionar médicos" />
-            <Button fx:id="btengessa" text="Gestionar salas" />
+        <VBox alignment="CENTER" prefHeight="499.0" prefWidth="430.0" spacing="15">
+            <Button fx:id="btn_gespac" onAction="#abrirGestionPacientes" text="Gestionar pacientes" />
+            <Button fx:id="btn_gesmed" onAction="#abririGestionMedicos" text="Gestionar médicos" />
+            <Button fx:id="btn_gessa" onAction="#abrirGestionSalas" text="Gestionar salas" />
         </VBox>
     </center>
 

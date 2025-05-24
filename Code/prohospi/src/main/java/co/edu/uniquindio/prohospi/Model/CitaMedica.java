@@ -1,9 +1,5 @@
 package co.edu.uniquindio.prohospi.Model;
 
-import co.edu.uniquindio.prohospi.Model.Medico;
-import co.edu.uniquindio.prohospi.Model.Paciente;
-import co.edu.uniquindio.prohospi.Model.Sala;
-
 import java.time.LocalDateTime;
 
 public class CitaMedica {

@@ -1,10 +1,10 @@
 package co.edu.uniquindio.prohospi.ViewController;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 
 public class SeleccionRolViewController {
 

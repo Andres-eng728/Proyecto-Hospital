@@ -1,6 +1,5 @@
 package co.edu.uniquindio.prohospi.Controller;
 
-import co.edu.uniquindio.prohospi.Model.Medico;
 import co.edu.uniquindio.prohospi.Model.Paciente;
 
 import java.util.ArrayList;

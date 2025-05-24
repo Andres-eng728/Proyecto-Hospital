@@ -1,12 +1,9 @@
 package co.edu.uniquindio.prohospi.Model;
 
-import co.edu.uniquindio.prohospi.Model.Medico;
-import co.edu.uniquindio.prohospi.Model.Paciente;
-import co.edu.uniquindio.prohospi.Model.Sala;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.time.LocalDateTime;
