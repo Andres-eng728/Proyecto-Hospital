@@ -17,6 +17,6 @@
     <Button fx:id="btnNotificaciones" layoutX="200" layoutY="230" onAction="#verNotificaciones" prefWidth="200" text="Ver Notificaciones de Citas" />
 
     <Button fx:id="btnCerrarSesion" layoutX="256.0" layoutY="343.0" onAction="#cerrarSesion" text="Cerrar Sesión" />
-   <Button fx:id="btn_Enviarnoti" layoutX="245.0" layoutY="290.0" mnemonicParsing="false" onAction="#OnEnviarNoti" text="Enviar Notificaion" />
+   <Button fx:id="btn_Enviarnoti" layoutX="245.0" layoutY="290.0" mnemonicParsing="false" onAction="#OnEnviarNoti" text="Enviar Notificacion" />
 
 </AnchorPane>
