@@ -116,7 +116,9 @@ public class Medico extends Persona implements InterfazHistorial {
     public void notificarCambioCita(Paciente paciente1, String mensaje) {
         notificaciones.add("Cambio en cita: " + mensaje);
     }
-
+    /**
+     * Metodo para ver y limpiar las notificaciones
+     */
     public void verNotificaciones() {
         if (notificaciones.isEmpty()) {
             System.out.println("No hay notificaciones nuevas.");
