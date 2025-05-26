@@ -45,7 +45,9 @@ public class Paciente extends Persona implements  InterfazHistorial {
             notificaciones.add("La cita médica para el día " + cita.getFechaHora() + " ha sido cancelada.");
         }
     }
-
+    /**
+     * Metodo para ver el historial del paciente
+     */
     @Override
     public void verHistorial() {
         System.out.println("Mostrando historial médico de: " + nombre);
