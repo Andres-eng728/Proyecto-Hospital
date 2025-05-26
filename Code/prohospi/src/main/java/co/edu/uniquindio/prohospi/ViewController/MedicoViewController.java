@@ -1,0 +1,73 @@
+package co.edu.uniquindio.prohospi.ViewController;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class MedicoViewController {
+
+    @FXML
+    private Button btnCerrarSesion;
+
+    @FXML
+    private Button btnDiagnostico;
+
+    @FXML
+    private Button btnHistoriales;
+
+    @FXML
+    private Button btnHorarios;
+
+    @FXML
+    private Button btnNotificaciones;
+
+    @FXML
+    private Button btnEnviarNoti;
+
+    @FXML
+    void administrarHorarios(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cerrarSesion(ActionEvent event) {
+        Stage stage = (Stage) btnCerrarSesion.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void registrarDiagnostico(ActionEvent event) {
+
+    }
+
+    @FXML
+    void verHistoriales(ActionEvent event) {
+
+    }
+
+    @FXML
+    void verNotificaciones(ActionEvent event) {
+
+    }
+
+    public void OnEnviarNoti(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/prohospi/CorreoNoti.fxml"));
+            Parent root = fxmlLoader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Enviar Correo");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace(); // o mostrar un Alert
+        }
+    }
+}

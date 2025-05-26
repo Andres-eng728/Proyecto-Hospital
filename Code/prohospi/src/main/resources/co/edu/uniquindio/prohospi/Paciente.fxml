@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="co.edu.uniquindio.prohospi.ViewController.PacienteViewController">
+
+    <Label layoutX="220.0" layoutY="30.0" style="-fx-font-size: 20px;" text="Panel del Paciente" />
+
+    <Button fx:id="btnRegistrarActualizar" layoutX="200.0" layoutY="90.0" onAction="#registrarActualizarDatos" prefWidth="200.0" text="Registrar / Actualizar Datos" />
+
+    <Button fx:id="btnSolicitarCita" layoutX="200.0" layoutY="140.0" onAction="#solicitarCita" prefWidth="200.0" text="Solicitar Cita Médica" />
+
+    <Button fx:id="btnVerHistorial" layoutX="200.0" layoutY="200.0" onAction="#verHistorial" prefWidth="200.0" text="Ver Historial Médico" />
+
+    <Button fx:id="btnVerNotificaciones" layoutX="200.0" layoutY="259.0" onAction="#verNotificaciones" prefWidth="200.0" text="Ver Notificaciones" />
+
+    <Button fx:id="btnCerrarSesion" layoutX="200.0" layoutY="340.0" onAction="#cerrarSesion" prefWidth="200.0" text="Cerrar Sesión" />
+</AnchorPane>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.prohospi.ViewController.SeleccionRolViewController"
+            prefWidth="400" prefHeight="300">
+
+    <!-- Título arriba -->
+    <top>
+        <Label text="HOSPITAL UQ"
+               style="-fx-font-size: 28px; -fx-font-weight: bold;"
+               BorderPane.alignment="CENTER" />
+    </top>
+
+    <!-- Botones alineados verticalmente abajo -->
+    <bottom>
+        <VBox alignment="CENTER" spacing="10" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="20" bottom="30" />
+            </padding>
+
+            <Button text="Administrador"
+                    onAction="#loginAdministrador"
+                    style="-fx-font-size: 14px; -fx-pref-width: 200px;" />
+
+            <Button text="Médico"
+                    onAction="#loginMedico"
+                    style="-fx-font-size: 14px; -fx-pref-width: 200px;" />
+
+            <Button text="Paciente"
+                    onAction="#loginPaciente"
+                    style="-fx-font-size: 14px; -fx-pref-width: 200px;" />
+        </VBox>
+    </bottom>
+</BorderPane>
+
+

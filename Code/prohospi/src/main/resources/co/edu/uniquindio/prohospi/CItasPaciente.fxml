@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.DatePicker?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.prohospi.ViewController.CitaMedicaViewController"
+            prefWidth="640" prefHeight="500">
+
+    <!-- Título -->
+    <Label layoutX="20" layoutY="20" text="Solicitar Nueva Cita" style="-fx-font-size: 16px;"/>
+
+    <!-- HBox para seleccionar especialidad, médico, fecha -->
+    <HBox layoutX="20" layoutY="50" spacing="10">
+        <ComboBox fx:id="cbEspecialidades" promptText="Especialidad" prefWidth="180"/>
+        <ComboBox fx:id="cbMedicos" promptText="Médico" prefWidth="180" editable="true"/>
+        <DatePicker fx:id="dpFechaCita" promptText="Fecha" prefWidth="140"/>
+        <Button text="Solicitar" onAction="#solicitarCita"/>
+    </HBox>
+
+    <!-- Separador -->
+    <Separator layoutX="20" layoutY="100" prefWidth="600"/>
+
+    <!-- Título tabla -->
+    <Label layoutX="20" layoutY="120" text="Citas Programadas" style="-fx-font-size: 16px;"/>
+
+    <!-- Tabla de citas -->
+    <TableView fx:id="tablaCitas" layoutX="20" layoutY="150" prefWidth="600" prefHeight="250">
+        <columns>
+            <TableColumn fx:id="colFecha" text="Fecha" prefWidth="120"/>
+            <TableColumn fx:id="colHora" text="Hora" prefWidth="100"/>
+            <TableColumn fx:id="colMedico" text="Médico" prefWidth="180"/>
+        </columns>
+    </TableView>
+
+    <!-- Botón cancelar -->
+    <Button fx:id="btnCancelarCita" text="Cancelar Cita Seleccionada"
+            layoutX="20" layoutY="420" onAction="#cancelarCita" disable="true"/>
+</AnchorPane>

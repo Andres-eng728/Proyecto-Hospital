@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400" prefWidth="600" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="co.edu.uniquindio.prohospi.ViewController.VerHistorialMedicoViewController">
+
+    <Label layoutX="180" layoutY="20" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Historial Médico del Paciente" />
+
+    <TableView fx:id="tablaHistorial" layoutX="50" layoutY="60" prefHeight="280" prefWidth="500">
+        <columns>
+            <TableColumn fx:id="colFecha" prefWidth="100" text="Fecha" />
+            <TableColumn fx:id="colDiagnostico" prefWidth="200" text="Diagnóstico" />
+            <TableColumn fx:id="colTratamiento" prefWidth="200" text="Tratamiento" />
+        </columns>
+    </TableView>
+
+    <Button fx:id="btnVolver" layoutX="260" layoutY="350" onAction="#volverAlMenu" text="Volver" />
+</AnchorPane>

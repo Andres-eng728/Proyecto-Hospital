@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="353.0" prefWidth="651.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.prohospi.ViewController.AdministradorViewController">
+
+    <top>
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 20px;" text="Panel Administrador - Hospital UQ" BorderPane.alignment="CENTER" />
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" prefHeight="499.0" prefWidth="430.0" spacing="15">
+            <Button fx:id="btn_gespac" onAction="#abrirGestionPacientes" text="Gestionar pacientes" />
+            <Button fx:id="btn_gesmed" onAction="#abririGestionMedicos" text="Gestionar médicos" />
+            <Button fx:id="btn_gessa" onAction="#abrirGestionSalas" text="Gestionar salas" />
+         <Button fx:id="btn_Noti" mnemonicParsing="false" onAction="#OnEnivarNoti" text="Enviar Notificaion" />
+        </VBox>
+    </center>
+
+    <bottom>
+        <Button fx:id="btn_cerrar" text="Cerrar sesión" BorderPane.alignment="CENTER" />
+    </bottom>
+
+</BorderPane>
