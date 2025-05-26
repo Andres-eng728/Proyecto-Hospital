@@ -93,7 +93,9 @@ public class Paciente extends Persona implements  InterfazHistorial {
     public void setNotificaciones(List<String> notificaciones) {
         this.notificaciones = notificaciones;
     }
-
+    /**
+     * Metodo para ver y limpiar las notificaciones del paciente
+     */
     public void verNotificaciones() {
         if (notificaciones.isEmpty()) {
             System.out.println("No tienes notificaciones nuevas.");
