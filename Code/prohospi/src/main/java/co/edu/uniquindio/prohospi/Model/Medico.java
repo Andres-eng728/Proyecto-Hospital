@@ -108,7 +108,11 @@ public class Medico extends Persona implements InterfazHistorial {
         }
         return "Sin horario asignado";
     }
-
+    /**
+     * Metodo para notificar el cambio de una cita
+     * @param paciente1
+     * @param mensaje
+     */
     public void notificarCambioCita(Paciente paciente1, String mensaje) {
         notificaciones.add("Cambio en cita: " + mensaje);
     }
