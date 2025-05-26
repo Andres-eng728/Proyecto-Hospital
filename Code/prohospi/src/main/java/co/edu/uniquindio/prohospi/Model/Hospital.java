@@ -18,12 +18,19 @@ public class Hospital {
     public void agregarMedico(Medico medico) {
         medicos.add(medico);
     }
-
+    /**
+     * Metodo para agregar paciente al hospital
+     * @param paciente
+     */
     public void agregarPaciente(Paciente paciente) {
         pacientes.add(paciente);
     }
 
-
+    /**
+     * Metodo para asignarle un paciente a un medico
+     * @param paciente
+     * @param medico
+     */
     public void asignarPacienteAMedico(Paciente paciente, Medico medico) {
         medico.agregarPaciente(paciente);
     }
