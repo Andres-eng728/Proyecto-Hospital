@@ -95,7 +95,11 @@ public class Medico extends Persona implements InterfazHistorial {
     public void asignarHorario(String dia, String hora) {
         horariosConsulta.add(new Horario(dia, hora));
     }
-
+    /**
+     * Metodo para ver el horario de un medico
+     * @param dia
+     * @return
+     */
     public String consultarHorario(String dia) {
         for (Horario horario : horariosConsulta) {
             if (horario.getDia().equalsIgnoreCase(dia)) {
