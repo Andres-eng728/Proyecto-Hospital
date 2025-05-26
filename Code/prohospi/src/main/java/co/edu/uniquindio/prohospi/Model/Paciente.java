@@ -28,12 +28,18 @@ public class Paciente extends Persona implements  InterfazHistorial {
         setNombre(nuevoNombre);
         setCorreo(nuevoEmail);
     }
-
+    /**
+     * Metodo para solicitar y agendar cita
+     * @param cita
+     */
     public void solicitarCita(CitaMedica cita) {
         citasProgramadas.add(cita);
         notificaciones.add("Cita médica programada para el día " + cita.getFechaHora());
     }
-
+    /**
+     * Metodo para cancelar una cita
+     * @param cita
+     */
     public void cancelarCita(CitaMedica cita) {
         if (citasProgramadas.remove(cita)) {
             notificaciones.add("La cita médica para el día " + cita.getFechaHora() + " ha sido cancelada.");
