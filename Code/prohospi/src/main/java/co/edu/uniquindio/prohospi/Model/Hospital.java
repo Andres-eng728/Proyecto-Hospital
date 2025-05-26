@@ -11,7 +11,10 @@ public class Hospital {
         this.medicos = new ArrayList<>();
         this.pacientes = new ArrayList<>();
     }
-
+    /**
+     * Metodo para agregar un medico al hospital
+     * @param medico
+     */
     public void agregarMedico(Medico medico) {
         medicos.add(medico);
     }
