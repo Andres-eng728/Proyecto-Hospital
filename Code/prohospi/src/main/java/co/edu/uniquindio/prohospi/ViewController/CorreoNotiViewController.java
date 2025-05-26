@@ -79,7 +79,7 @@ public class CorreoNotiViewController {
         alert.showAndWait();
     }
     @FXML private void OnVolver(ActionEvent event) {
-        cambiarVista("/co/edu/uniquindio/poo/biblioteca/crudBiblioteca.fxml", event);
+        cambiarVista("/co/edu/uniquindio/prohospi/Admin.fxml", event);
     }
 
     @FXML

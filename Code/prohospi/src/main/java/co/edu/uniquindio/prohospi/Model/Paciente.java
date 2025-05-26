@@ -13,7 +13,7 @@ public class Paciente extends Persona implements  InterfazHistorial {
 
     public Paciente(String nombre, String identificacion, String correo, String contrasenaPaciente,String usuarioPaciente) {
         super(nombre, identificacion, correo);
-        this.historial = new HistorialMedico("can","terapia","2021-01-01");
+        this.historial = new HistorialMedico("can","terapia","2021-01-01","142");
         this.usuarioPaciente = usuarioPaciente;
         this.contrasenaPaciente = contrasenaPaciente;
         this.citasProgramadas = new ArrayList<>();

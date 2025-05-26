@@ -8,7 +8,7 @@ public class TestHistorialMedico {
     @Test
     public void testGetAntecedentes() {
         // Crear historial médico
-        HistorialMedico historial = new HistorialMedico("amnesia","pasta","2025-01-01");
+        HistorialMedico historial = new HistorialMedico("amnesia","pasta","2025-01-01","1414");
 
         // Agregar antecedentes médicos
         historial.actualizarHistorial("Hipertensión");

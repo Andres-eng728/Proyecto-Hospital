@@ -9,10 +9,13 @@ public class HistorialMedico {
     private String diagnostico;
     private String tratamiento;
     private String fecha;
-    public HistorialMedico(String diagnostico, String tratamiento, String fecha) {
+    private String idPaciente;
+
+    public HistorialMedico(String diagnostico, String tratamiento, String fecha, String idPaciente) {
         this.fecha = fecha;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
+        this.idPaciente = idPaciente;
         this.entradas = new ArrayList<>();
         this.antecedentes = new ArrayList<>();
     }
@@ -70,4 +73,13 @@ public class HistorialMedico {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+    public String getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(String idPaciente) {
+        this.idPaciente = idPaciente;
+    }
 }
+
