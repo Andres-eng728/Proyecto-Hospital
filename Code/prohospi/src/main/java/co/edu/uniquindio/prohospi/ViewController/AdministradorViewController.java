@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.EventObject;
 
 public class AdministradorViewController {
 
@@ -33,8 +34,23 @@ public class AdministradorViewController {
 
     @FXML
     void abrirGestionSalas(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/prohospi/Salas.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Gestión de Salas");
+            stage.setScene(new Scene(root));
+            stage.show();
 
+            // 🔻 Cerramos la ventana actual:
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
     @FXML
     void abririGestionMedicos(ActionEvent event) {
@@ -87,6 +103,45 @@ public class AdministradorViewController {
 
         } catch (IOException e) {
             e.printStackTrace(); // o mostrar un Alert
+        }
+    }
+    @FXML
+    public void OnReportes(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/prohospi/Reportes.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Generar reportes");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // 🔻 Cerramos la ventana actual:
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public void OnAsignar(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/prohospi/AsignarPaciente.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Asignar pacientes");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // 🔻 Cerramos la ventana actual:
+
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

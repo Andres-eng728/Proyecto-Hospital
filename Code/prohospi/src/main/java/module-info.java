@@ -3,6 +3,7 @@ module co.edu.uniquindio.prohospi {
     requires javafx.fxml;
     requires javafx.graphics;
     requires jakarta.mail;
+    requires java.desktop;
 
 
     exports co.edu.uniquindio.prohospi.Model;

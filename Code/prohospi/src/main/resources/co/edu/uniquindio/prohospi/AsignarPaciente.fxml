@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.prohospi.ViewController.AsignarPacienteViewController"
+            prefWidth="600" prefHeight="400">
+    <children>
+        <Label layoutX="50" layoutY="20" text="Asignar Paciente a Médico" style="-fx-font-size: 18;" />
+
+        <Label layoutX="50" layoutY="70" text="Paciente:"/>
+        <ChoiceBox fx:id="cbPaciente" layoutX="150" layoutY="65" prefWidth="150"/>
+
+        <Label layoutX="50" layoutY="110" text="Día:"/>
+        <ChoiceBox fx:id="cbDia" layoutX="150" layoutY="105" prefWidth="150"/>
+
+        <Label layoutX="50" layoutY="150" text="Hora:"/>
+        <ChoiceBox fx:id="cbHora" layoutX="150" layoutY="145" prefWidth="150"/>
+
+        <Label layoutX="50" layoutY="190" text="Médico disponible:"/>
+        <ChoiceBox fx:id="cbMedico" layoutX="150" layoutY="185" prefWidth="150"/>
+
+        <Button fx:id="btnAsignar" layoutX="150" layoutY="230" text="Asignar Paciente" onAction="#asignarPaciente"/>
+
+        <TableView fx:id="tablaAsignaciones" layoutX="330" layoutY="60" prefWidth="230" prefHeight="250">
+            <columns>
+                <TableColumn fx:id="colPaciente" text="Paciente" prefWidth="100"/>
+                <TableColumn fx:id="colMedico" text="Médico" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

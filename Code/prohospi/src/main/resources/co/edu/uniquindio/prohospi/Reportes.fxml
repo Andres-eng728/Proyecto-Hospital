@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.prohospi.ViewController.ReportesViewController"
+            prefWidth="600" prefHeight="400">
+    <children>
+        <Label layoutX="50" layoutY="20" text="Reportes del Hospital" style="-fx-font-size: 18;" />
+
+        <Button fx:id="btnReporteCitas" layoutX="50" layoutY="70" text="Generar Reporte de Citas" onAction="#generarReporteCitas"/>
+        <Button fx:id="btnReporteOcupacion" layoutX="250" layoutY="70" text="Generar Reporte de Ocupación" onAction="#generarReporteOcupacion"/>
+
+        <TextArea fx:id="areaResultados" layoutX="50" layoutY="120" prefWidth="500" prefHeight="220" editable="false" wrapText="true"/>
+    </children>
+</AnchorPane>

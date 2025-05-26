@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.prohospi.ViewController.DiagnosticoViewController"
+            prefWidth="800" prefHeight="500">
+
+    <children>
+
+        <Label layoutX="30" layoutY="20" text="Registrar Diagnóstico y Tratamiento">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+
+        <!-- Campos de entrada -->
+        <Label layoutX="30" layoutY="70" text="ID Paciente:"/>
+        <TextField fx:id="txtIdPaciente" layoutX="150" layoutY="65" prefWidth="200"/>
+
+        <Label layoutX="30" layoutY="110" text="Diagnóstico:"/>
+        <TextField fx:id="txtDiagnostico" layoutX="150" layoutY="105" prefWidth="200"/>
+
+        <Label layoutX="30" layoutY="150" text="Tratamiento:"/>
+        <TextField fx:id="txtTratamiento" layoutX="150" layoutY="145" prefWidth="200"/>
+
+        <Button fx:id="btnGuardar" layoutX="150" layoutY="190" text="Guardar Diagnóstico" onAction="#onGuardarDiagnostico"/>
+
+        <!-- Tabla para mostrar los diagnósticos -->
+        <TableView fx:id="tablaDiagnosticos" layoutX="30" layoutY="240" prefWidth="740" prefHeight="230">
+
+            <columns>
+                <TableColumn fx:id="colIdPaciente" text="ID Paciente" prefWidth="150"/>
+                <TableColumn fx:id="colDiagnostico" text="Diagnóstico" prefWidth="300"/>
+                <TableColumn fx:id="colTratamiento" text="Tratamiento" prefWidth="290"/>
+            </columns>
+
+        </TableView>
+
+    </children>
+</AnchorPane>

@@ -62,7 +62,10 @@ public class Administrador extends Persona {
     public void eliminarSala(List<String> salas, String sala) {
         salas.remove(sala);
     }
-
+    /**
+     * Metodo para mostrar la disponibilidad de los medicos
+     * @param medicos
+     */
     public void mostrarDisponibilidad(List<Medico> medicos) {
         for (Medico m : medicos) {
             System.out.println("Médico: " + m.getNombre());
@@ -73,7 +76,10 @@ public class Administrador extends Persona {
     public void asignarPaciente(Medico medico, Paciente paciente) {
         medico.agregarPaciente(paciente);
     }
-
+    /**
+     * Metodo para generar los reportes de las citas de los pacientes
+     * @param hospital
+     */
     public void generarReporteCitas(Hospital hospital) {
         System.out.println("REPORTE DE CITAS:");
         for (Paciente paciente : hospital.getPacientes()) {
@@ -84,7 +90,10 @@ public class Administrador extends Persona {
             }
         }
     }
-
+    /**
+     * Metodo que genera reportes de ocupacion de los medicos
+     * @param hospital
+     */
     public void generarReporteOcupacion(Hospital hospital) {
         System.out.println("REPORTE DE OCUPACIÓN MÉDICA:");
         for (Medico medico : hospital.getMedicos()) {

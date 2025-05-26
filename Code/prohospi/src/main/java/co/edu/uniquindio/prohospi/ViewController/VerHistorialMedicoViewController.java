@@ -38,8 +38,8 @@ public class VerHistorialMedicoViewController  {
 
         // Datos de ejemplo (puedes cargarlos desde tu sistema real)
         ObservableList<HistorialMedico> historial = FXCollections.observableArrayList(
-                new HistorialMedico("Gripe", "Paracetamol", "2023-05-01"),
-                new HistorialMedico("Fractura", "Yeso", "2023-07-15")
+                new HistorialMedico("Gripe", "Paracetamol", "2023-05-01","313213"),
+                new HistorialMedico("Fractura", "Yeso", "2023-07-15","15251")
         );
 
         tablaHistorial.setItems(historial);

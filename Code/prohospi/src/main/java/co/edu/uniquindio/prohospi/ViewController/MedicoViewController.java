@@ -32,6 +32,7 @@ public class MedicoViewController {
 
     @FXML
     void administrarHorarios(ActionEvent event) {
+        abrirVentana("/co/edu/uniquindio/prohospi/Horarios.fxml", "Horarios de Consulta");
 
     }
 
@@ -43,17 +44,18 @@ public class MedicoViewController {
 
     @FXML
     void registrarDiagnostico(ActionEvent event) {
-
+        abrirVentana("/co/edu/uniquindio/prohospi/Diagnostico.fxml", "Registrar Diagnóstico");
     }
 
     @FXML
     void verHistoriales(ActionEvent event) {
+        abrirVentana("/co/edu/uniquindio/prohospi/VerHistorialMedico.fxml", "Historiales Médicos");
 
     }
 
     @FXML
     void verNotificaciones(ActionEvent event) {
-
+        abrirVentana("/co/edu/uniquindio/prohospi/VerNotificaciones.fxml", "Notificaciones de Citas");
     }
 
     public void OnEnviarNoti(ActionEvent actionEvent) {
@@ -68,6 +70,20 @@ public class MedicoViewController {
 
         } catch (IOException e) {
             e.printStackTrace(); // o mostrar un Alert
+        }
+    }
+
+
+    private void abrirVentana(String rutaFXML, String titulo) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle(titulo);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

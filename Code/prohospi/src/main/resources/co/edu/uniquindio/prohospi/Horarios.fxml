@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.prohospi.ViewController.HorariosViewController"
+            prefWidth="600" prefHeight="400">
+    <children>
+        <Label layoutX="50" layoutY="30" text="Administrar Horarios de Consulta" style="-fx-font-size: 18;" />
+
+        <Label layoutX="50" layoutY="80" text="Día:" />
+        <ChoiceBox fx:id="cbDia" layoutX="150" layoutY="75" prefWidth="150">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Lunes"/>
+                    <String fx:value="Martes"/>
+                    <String fx:value="Miércoles"/>
+                    <String fx:value="Jueves"/>
+                    <String fx:value="Viernes"/>
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+
+        <Label layoutX="50" layoutY="130" text="Hora de inicio:" />
+        <TextField fx:id="txtHoraInicio" layoutX="150" layoutY="125" prefWidth="150" promptText="Ej: 08:00" />
+
+        <Label layoutX="50" layoutY="180" text="Hora de fin:" />
+        <TextField fx:id="txtHoraFin" layoutX="150" layoutY="175" prefWidth="150" promptText="Ej: 12:00" />
+
+        <Button fx:id="btnAgregarHorario" layoutX="150" layoutY="230" text="Agregar Horario" onAction="#agregarHorario" />
+        <ListView fx:id="listaHorarios" layoutX="350" layoutY="75" prefHeight="200" prefWidth="200"/>
+
+        <Button fx:id="btnGuardar" layoutX="250" layoutY="300" text="Guardar Horarios" onAction="#guardarHorarios"/>
+    </children>
+</AnchorPane>

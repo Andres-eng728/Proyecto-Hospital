@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="co.edu.uniquindio.prohospi.ViewController.SalasViewController"
+            prefWidth="600" prefHeight="400">
+    <children>
+        <Label layoutX="50" layoutY="20" text="Gestión de Salas" style="-fx-font-size: 18;" />
+
+        <Label layoutX="50" layoutY="70" text="ID Sala:"/>
+        <TextField fx:id="txtIdSala" layoutX="150" layoutY="65" prefWidth="150"/>
+
+        <Label layoutX="50" layoutY="110" text="Tipo:"/>
+        <TextField fx:id="txtTipoSala" layoutX="150" layoutY="105" prefWidth="150"/>
+
+        <Label layoutX="50" layoutY="150" text="Capacidad:"/>
+        <TextField fx:id="txtCapacidad" layoutX="150" layoutY="145" prefWidth="150"/>
+
+        <Button fx:id="btnRegistrarSala" layoutX="150" layoutY="190" text="Registrar Sala" onAction="#registrarSala"/>
+
+        <TableView fx:id="tablaSalas" layoutX="330" layoutY="60" prefWidth="230" prefHeight="250">
+            <columns>
+                <TableColumn fx:id="colIdSala" text="ID" prefWidth="70"/>
+                <TableColumn fx:id="colTipoSala" text="Tipo" prefWidth="80"/>
+                <TableColumn fx:id="colCapacidad" text="Capacidad" prefWidth="80"/>
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

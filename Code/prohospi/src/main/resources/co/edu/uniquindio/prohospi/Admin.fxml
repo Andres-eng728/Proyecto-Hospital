@@ -16,6 +16,8 @@
             <Button fx:id="btn_gespac" onAction="#abrirGestionPacientes" text="Gestionar pacientes" />
             <Button fx:id="btn_gesmed" onAction="#abririGestionMedicos" text="Gestionar médicos" />
             <Button fx:id="btn_gessa" onAction="#abrirGestionSalas" text="Gestionar salas" />
+         <Button fx:id="btn_Reportes" mnemonicParsing="false" onAction="#OnReportes" text="Reportes" />
+         <Button fx:id="btn_Asingnar" mnemonicParsing="false" onAction="#OnAsignar" text="Asignar" />
          <Button fx:id="btn_Noti" mnemonicParsing="false" onAction="#OnEnivarNoti" text="Enviar Notificaion" />
         </VBox>
     </center>
