@@ -19,7 +19,11 @@ public class Paciente extends Persona implements  InterfazHistorial {
         this.citasProgramadas = new ArrayList<>();
         this.notificaciones = new ArrayList<>();
     }
-
+    /**
+     * Actualiza los datos del paciente
+     * @param nuevoNombre
+     * @param nuevoEmail
+     */
     public void actualizarDatos(String nuevoNombre, String nuevoEmail) {
         setNombre(nuevoNombre);
         setCorreo(nuevoEmail);
