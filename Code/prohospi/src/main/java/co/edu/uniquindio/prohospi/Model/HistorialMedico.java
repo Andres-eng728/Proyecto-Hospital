@@ -1,9 +1,11 @@
 package co.edu.uniquindio.prohospi.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistorialMedico {
+public class HistorialMedico implements Serializable{
+    private static final long serialVersionUID = 1L;
     private List<String> entradas;
     private List<String> antecedentes;
     private String diagnostico;
@@ -11,7 +13,7 @@ public class HistorialMedico {
     private String fecha;
     private String idPaciente;
 
-    public HistorialMedico(String diagnostico, String tratamiento, String fecha, String idPaciente) {
+    public HistorialMedico(String diagnostico, String tratamiento, String fecha, String idPaciente)  {
         this.fecha = fecha;
         this.diagnostico = diagnostico;
         this.tratamiento = tratamiento;
@@ -19,6 +21,7 @@ public class HistorialMedico {
         this.entradas = new ArrayList<>();
         this.antecedentes = new ArrayList<>();
     }
+    public HistorialMedico() {}
     /**
      * Metodo para agregar entrada
      * @param entrada

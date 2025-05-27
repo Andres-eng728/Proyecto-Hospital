@@ -2,6 +2,7 @@
 package co.edu.uniquindio.prohospi.ViewController;
 
 import co.edu.uniquindio.prohospi.Model.Administrador;
+import co.edu.uniquindio.prohospi.Model.GestorPacientes;
 import co.edu.uniquindio.prohospi.Model.Paciente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GestionPacientesViewController implements Initializable {
@@ -81,7 +84,7 @@ public class GestionPacientesViewController implements Initializable {
     private Administrador administrador;
     String mensaje;
     String titulo;
-    private ObservableList<Paciente> Pacientes = FXCollections.observableArrayList();
+
 
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
@@ -129,14 +132,17 @@ public class GestionPacientesViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        cargarPacientesDesdeArchivoSerializado();
+        tbv_gestionpacientes.setItems(GestorPacientes.getInstancia().getPacientes());
+
         clm_idpaciente.setCellValueFactory(new PropertyValueFactory<>("identificacion"));
         clm_nombrepaciente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         clm_usuaripaciente.setCellValueFactory(new PropertyValueFactory<>("usuarioPaciente"));
         clm_contrapaciente.setCellValueFactory(new PropertyValueFactory<>("contrasenaPaciente"));
         clm_correoP.setCellValueFactory(new PropertyValueFactory<>("correo"));
 
-        tbv_gestionpacientes.setItems(Pacientes);
-        Pacientes.add(new Paciente("Andrés", "123", "andres@email.com", "1234", "andresu"));
+        tbv_gestionpacientes.setItems(GestorPacientes.getInstancia().getPacientes());
+
         tbv_gestionpacientes.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null) {
                 txt_nombrepaciente.setText(newSel.getNombre());
@@ -146,6 +152,7 @@ public class GestionPacientesViewController implements Initializable {
                 txt_contraseniaP.setText(newSel.getContrasenaPaciente());
             }
         });
+        tbv_gestionpacientes.setItems(GestorPacientes.getInstancia().getPacientes());
     }
     @FXML
     void OnAgregarpaciente(ActionEvent event) {
@@ -157,10 +164,10 @@ public class GestionPacientesViewController implements Initializable {
 
         Paciente nuevoPaciente = new Paciente(nombre, identificacion, correo, contrasena, usuario);
 
-        Pacientes.add(nuevoPaciente);
 
+        GestorPacientes.getInstancia().getPacientes().add(nuevoPaciente);
+        guardarPacientesEnArchivoSerializado();
 
-        // Opcional: limpiar campos o mostrar mensaje
         limpiarCampos();
         mostrarAlerta("Agregado","Paciente agregado exitosamente");
     }
@@ -169,10 +176,22 @@ public class GestionPacientesViewController implements Initializable {
         Paciente seleccionado = tbv_gestionpacientes.getSelectionModel().getSelectedItem();
 
         if (seleccionado != null) {
-            Pacientes.remove(seleccionado);
-            mostrarAlerta("Eliminado", "Paciente eliminado exitosamente");
+            GestorPacientes.getInstancia().eliminarPaciente(seleccionado);
+            tbv_gestionpacientes.getItems().remove(seleccionado);
+
+            try {
+                ObservableList<Paciente> listaObservable = GestorPacientes.getInstancia().getPacientes();
+                List<Paciente> pacientesSerializables = new ArrayList<>();
+                pacientesSerializables.addAll(listaObservable);
+                Persistencia.serializarObjeto("Data\\BaseDatos", pacientesSerializables);
+
+                mostrarAlerta("Eliminado", "Paciente eliminado exitosamente");
+            } catch (IOException e) {
+                mostrarAlerta("Error", "Error al guardar los datos: " + e.getMessage());
+                e.printStackTrace();
+            }
         } else {
-            mostrarAlerta("Error","Debe seleccionar un paciente para eliminar");
+            mostrarAlerta("Error", "Debe seleccionar un paciente para eliminar");
         }
         limpiarCampos();
     }
@@ -189,9 +208,39 @@ public class GestionPacientesViewController implements Initializable {
 
             tbv_gestionpacientes.refresh(); // Refresca la tabla para mostrar los cambios
             mostrarAlerta( "Actualizado","Paciente actualizado exitosamente");
+
+            guardarPacientesEnArchivoSerializado();
         } else {
             mostrarAlerta("Error", "Debe seleccionar un paciente para actualizar");
         }
 
     }
+    private void guardarPacientesEnArchivoSerializado () {
+        System.out.println("Pacientes en lista: " + GestorPacientes.getInstancia().getPacientes().size());
+
+        try {
+            ObservableList<Paciente> listaObservable = GestorPacientes.getInstancia().getPacientes();
+            List<Paciente> pacientesSerializables = new ArrayList<>();
+            pacientesSerializables.addAll(listaObservable);
+            Persistencia.serializarObjeto("Data\\BaseDatos", pacientesSerializables);            System.out.println("Pacientes guardados en Base datos.txt");
+        } catch (IOException e) {
+            System.err.println("Error al guardar Pacientes:");
+            e.printStackTrace();
+        }
+    }
+
+    private void cargarPacientesDesdeArchivoSerializado() {
+        try {
+            Object obj = Persistencia.deserializarObjeto("Data\\BaseDatos.txt");
+            if (obj instanceof ArrayList<?>) {
+                GestorPacientes.getInstancia().getPacientes().clear();
+                GestorPacientes.getInstancia().getPacientes().addAll((ArrayList<Paciente>) obj);
+                System.out.println("Pacientes cargados desde Base datos.txt");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al cargar Pacientes:");
+            e.printStackTrace();
+   }
+}
+
 }

@@ -1,10 +1,11 @@
 package co.edu.uniquindio.prohospi.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Paciente extends Persona implements  InterfazHistorial {
-
+public class Paciente extends Persona implements  InterfazHistorial, Serializable {
+    private static final long serialVersionUID = 1L;
     private HistorialMedico historial;
     private String usuarioPaciente;
     private String contrasenaPaciente;
@@ -19,6 +20,11 @@ public class Paciente extends Persona implements  InterfazHistorial {
         this.citasProgramadas = new ArrayList<>();
         this.notificaciones = new ArrayList<>();
     }
+    public Paciente() {
+        super();
+    }
+
+
     /**
      * Actualiza los datos del paciente
      * @param nuevoNombre
