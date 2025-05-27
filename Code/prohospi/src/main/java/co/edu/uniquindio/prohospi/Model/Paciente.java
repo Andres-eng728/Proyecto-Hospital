@@ -40,7 +40,7 @@ public class Paciente extends Persona implements  InterfazHistorial, Serializabl
      */
     public void solicitarCita(CitaMedica cita) {
         citasProgramadas.add(cita);
-        notificaciones.add("Cita médica programada para el día " + cita.getFechaHora());
+        notificaciones.add("Cita médica programada para el día " + cita.getFecha());
     }
     /**
      * Metodo para cancelar una cita
@@ -48,7 +48,7 @@ public class Paciente extends Persona implements  InterfazHistorial, Serializabl
      */
     public void cancelarCita(CitaMedica cita) {
         if (citasProgramadas.remove(cita)) {
-            notificaciones.add("La cita médica para el día " + cita.getFechaHora() + " ha sido cancelada.");
+            notificaciones.add("La cita médica para el día " + cita.getFecha() + " ha sido cancelada.");
         }
     }
     /**

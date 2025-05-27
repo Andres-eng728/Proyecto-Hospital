@@ -1,5 +1,8 @@
 package co.edu.uniquindio.prohospi.ViewController;
 
+import co.edu.uniquindio.prohospi.Model.CitaMedica;
+import co.edu.uniquindio.prohospi.Model.Gestor;
+import co.edu.uniquindio.prohospi.Model.Medico;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,22 +23,22 @@ public class CitaMedicaViewController {
     private DatePicker dpFechaCita;
 
     @FXML
-    private TableView<Cita> tablaCitas;
+    private TableView<CitaMedica> tablaCitas;
 
     @FXML
-    private TableColumn<Cita, LocalDate> colFecha;
+    private TableColumn<CitaMedica, LocalDate> colFecha;
 
     @FXML
-    private TableColumn<Cita, String> colHora;
+    private TableColumn<CitaMedica, String> colHora;
 
     @FXML
-    private TableColumn<Cita, String> colMedico;
+    private TableColumn<CitaMedica, String> colMedico;
 
     @FXML
     private Button btnCancelarCita;
 
     // Lista de citas del paciente
-    private ObservableList<Cita> listaCitas = FXCollections.observableArrayList();
+
 
     public void initialize() {
         // Inicializar combos con datos (pueden venir de DB)
@@ -45,7 +48,7 @@ public class CitaMedicaViewController {
         cbEspecialidades.getSelectionModel().selectFirst();
 
         cbMedicos.setItems(FXCollections.observableArrayList(
-                "Dr. Pérez", "Dra. Gómez", "Dr. Martínez"
+                "medico1", "Dra. Gómez", "Dr. Martínez"
         ));
         cbMedicos.getSelectionModel().selectFirst();
 
@@ -54,13 +57,11 @@ public class CitaMedicaViewController {
         colHora.setCellValueFactory(new PropertyValueFactory<>("hora"));
         colMedico.setCellValueFactory(new PropertyValueFactory<>("medico"));
 
-        // Ejemplo de citas precargadas
-        listaCitas.addAll(
-                new Cita(LocalDate.now().plusDays(1), "10:00 AM", "Dr. Pérez"),
-                new Cita(LocalDate.now().plusDays(3), "2:00 PM", "Dra. Gómez")
-        );
 
-        tablaCitas.setItems(listaCitas);
+
+
+
+        tablaCitas.setItems(Gestor.getInstancia().getListaCitas());
 
         // Inicialmente botón cancelar deshabilitado
         btnCancelarCita.setDisable(true);
@@ -100,8 +101,8 @@ public class CitaMedicaViewController {
 
         String horaEjemplo = "9:00 AM"; // En app real, seleccionable o generado
 
-        Cita nuevaCita = new Cita(fecha, horaEjemplo, medico);
-        listaCitas.add(nuevaCita);
+        CitaMedica nuevaCita = new CitaMedica(fecha, horaEjemplo, medico);
+        Gestor.getInstancia().getListaCitas().add(nuevaCita);
 
         mostrarAlerta("Éxito", "Cita solicitada para el " + fecha.toString());
 
@@ -110,7 +111,7 @@ public class CitaMedicaViewController {
     }
 
     public void cancelarCita(javafx.event.ActionEvent actionEvent) {
-        Cita citaSeleccionada = tablaCitas.getSelectionModel().getSelectedItem();
+        CitaMedica citaSeleccionada = tablaCitas.getSelectionModel().getSelectedItem();
 
         if (citaSeleccionada == null) {
             mostrarAlerta("Error", "Debe seleccionar una cita para cancelar.");
@@ -118,32 +119,9 @@ public class CitaMedicaViewController {
         }
 
 
-        listaCitas.remove(citaSeleccionada);
+        Gestor.getInstancia().getListaCitas().remove(citaSeleccionada);
         mostrarAlerta("Éxito", "Cita cancelada para el " + citaSeleccionada.getFecha().toString());
     }
 
-    // Clase anidada para representar una cita
-    public static class Cita {
-        private final LocalDate fecha;
-        private final String hora;
-        private final String medico;
 
-        public Cita(LocalDate fecha, String hora, String medico) {
-            this.fecha = fecha;
-            this.hora = hora;
-            this.medico = medico;
-        }
-
-        public LocalDate getFecha() {
-            return fecha;
-        }
-
-        public String getHora() {
-            return hora;
-        }
-
-        public String getMedico() {
-            return medico;
-        }
-    }
 }

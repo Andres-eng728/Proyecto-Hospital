@@ -1,5 +1,7 @@
 package co.edu.uniquindio.prohospi.ViewController;
 
+import co.edu.uniquindio.prohospi.Model.Gestor;
+import co.edu.uniquindio.prohospi.Model.Sala;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,7 +32,7 @@ public class SalasViewController {
     @FXML
     private TableColumn<Sala, Integer> colCapacidad;
 
-    private ObservableList<Sala> listaSalas = FXCollections.observableArrayList();
+
 
     @FXML
     public void initialize() {
@@ -38,7 +40,7 @@ public class SalasViewController {
         colTipoSala.setCellValueFactory(data -> data.getValue().tipoProperty());
         colCapacidad.setCellValueFactory(data -> data.getValue().capacidadProperty().asObject());
 
-        tablaSalas.setItems(listaSalas);
+        tablaSalas.setItems(Gestor.getInstancia().getListaSalas());
     }
 
     @FXML
@@ -53,8 +55,9 @@ public class SalasViewController {
             System.out.println("Capacidad inválida");
             return;
         }
+        Sala nuevasala = new Sala(id, tipo, capacidad); // Model.Sala
+        Gestor.getInstancia().getListaSalas().add(nuevasala);
 
-        listaSalas.add(new Sala(id, tipo, capacidad));
 
         txtIdSala.clear();
         txtTipoSala.clear();
@@ -76,27 +79,5 @@ public class SalasViewController {
         }
     }
 
-    public static class Sala {
-        private final javafx.beans.property.SimpleStringProperty id;
-        private final javafx.beans.property.SimpleStringProperty tipo;
-        private final javafx.beans.property.SimpleIntegerProperty capacidad;
 
-        public Sala(String id, String tipo, int capacidad) {
-            this.id = new javafx.beans.property.SimpleStringProperty(id);
-            this.tipo = new javafx.beans.property.SimpleStringProperty(tipo);
-            this.capacidad = new javafx.beans.property.SimpleIntegerProperty(capacidad);
-        }
-
-        public javafx.beans.property.StringProperty idProperty() {
-            return id;
-        }
-
-        public javafx.beans.property.StringProperty tipoProperty() {
-            return tipo;
-        }
-
-        public javafx.beans.property.IntegerProperty capacidadProperty() {
-            return capacidad;
-        }
-    }
 }

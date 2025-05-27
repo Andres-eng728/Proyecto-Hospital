@@ -1,6 +1,7 @@
 package co.edu.uniquindio.prohospi.ViewController;
 
 
+import co.edu.uniquindio.prohospi.Model.Gestor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,11 +21,11 @@ public class HorariosViewController {
     @FXML
     private ListView<String> listaHorarios;
 
-    private final ObservableList<String> horarios = FXCollections.observableArrayList();
+
 
     @FXML
     public void initialize() {
-        listaHorarios.setItems(horarios);
+        listaHorarios.setItems(Gestor.getInstancia().getHorarios());
     }
 
     @FXML
@@ -39,7 +40,7 @@ public class HorariosViewController {
         }
 
         String horario = dia + ": " + horaInicio + " - " + horaFin;
-        horarios.add(horario);
+        Gestor.getInstancia().getHorarios().add(horario);
 
         // Limpiar campos
         cbDia.setValue(null);
@@ -49,14 +50,14 @@ public class HorariosViewController {
 
     @FXML
     private void guardarHorarios() {
-        if (horarios.isEmpty()) {
+        if (Gestor.getInstancia().getHorarios().isEmpty()) {
             mostrarAlerta("Sin horarios", "Debe agregar al menos un horario.");
             return;
         }
 
         // Aquí podrías guardar los horarios a una base de datos, archivo, etc.
         System.out.println("Horarios guardados:");
-        for (String horario : horarios) {
+        for (String horario : Gestor.getInstancia().getHorarios()) {
             System.out.println(horario);
         }
 

@@ -1,25 +1,26 @@
 package co.edu.uniquindio.prohospi.Model;
 
-public class Sala {
-    private String codigo;
-    private String descripcion;
+public  class Sala {
+    private final javafx.beans.property.SimpleStringProperty id;
+    private final javafx.beans.property.SimpleStringProperty tipo;
+    private final javafx.beans.property.SimpleIntegerProperty capacidad;
 
-    public Sala(String codigo, String descripcion) {
-        this.codigo = codigo;
-        this.descripcion = descripcion;
+    public Sala(String id, String tipo, int capacidad) {
+        this.id = new javafx.beans.property.SimpleStringProperty(id);
+        this.tipo = new javafx.beans.property.SimpleStringProperty(tipo);
+        this.capacidad = new javafx.beans.property.SimpleIntegerProperty(capacidad);
     }
-    /**
-     * metodo que retorna codigo
-     * @return
-     */
-    public String getCodigo() {
-        return codigo;
+
+    public javafx.beans.property.StringProperty idProperty() {
+        return id;
     }
-    /**
-     * metodo que retorna descripcion
-     * @return
-     */
-    public String getDescripcion() {
-        return descripcion;
+
+    public javafx.beans.property.StringProperty tipoProperty() {
+        return tipo;
+    }
+
+    public javafx.beans.property.IntegerProperty capacidadProperty() {
+        return capacidad;
     }
 }
+

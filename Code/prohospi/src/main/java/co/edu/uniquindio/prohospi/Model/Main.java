@@ -22,9 +22,8 @@ public class Main extends  Application {
         launch(args);
         Medico medico = new Medico("Dra. López", "M123", "lopez@hospital.com", "Cardiología","medico1234","4567");
         Paciente paciente = new Paciente("Juan Pérez", "P456", "juan@correo.com","142","paciente32");
-        Sala sala = new Sala("S001", "Sala de Cardiología");
-        CitaMedica cita = new CitaMedica(LocalDateTime.now(), paciente, medico);
-        paciente.solicitarCita(cita);
+        Sala sala = new Sala("S001", "Sala de Cardiología",34);
+
         medico.registrarDiagnostico(paciente, "Hipertensión leve");
         paciente.verHistorial();
 

@@ -59,8 +59,8 @@ public Medico() {}
         return contrasenaMedico;
     }
     /**
-     * Metodo para asignar especialidad
-     * @param especialidad
+     * Metodo para modificaar la contraseña del medico
+     * @param contrasenaMedico
      */
     public void setContrasenaMedico(String contrasenaMedico) {
         this.contrasenaMedico = contrasenaMedico;

@@ -1,4 +1,5 @@
 package co.edu.uniquindio.prohospi.ViewController;
+import co.edu.uniquindio.prohospi.Model.Gestor;
 import co.edu.uniquindio.prohospi.Model.Paciente;
 import co.edu.uniquindio.prohospi.Model.HistorialMedico;
 import javafx.collections.FXCollections;
@@ -35,17 +36,16 @@ public class DiagnosticoViewController  {
     @FXML
     private TableColumn<HistorialMedico, String> colTratamiento;
 
-    private ObservableList<HistorialMedico> listaHistoriales;
 
     @FXML
     public void initialize() {
-        listaHistoriales = FXCollections.observableArrayList();
+
 
         colIdPaciente.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getIdPaciente()));
         colDiagnostico.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getDiagnostico()));
         colTratamiento.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getTratamiento()));
 
-        tablaDiagnosticos.setItems(listaHistoriales);
+        tablaDiagnosticos.setItems(Gestor.getInstancia().getListaHistoriales());
     }
 
     @FXML
@@ -53,14 +53,15 @@ public class DiagnosticoViewController  {
         String id = txtIdPaciente.getText();
         String diagnostico = txtDiagnostico.getText();
         String tratamiento = txtTratamiento.getText();
+        String fecha = "20" ;
 
         if (id.isEmpty() || diagnostico.isEmpty() || tratamiento.isEmpty()) {
             mostrarAlerta("Debe llenar todos los campos.");
             return;
         }
 
-        HistorialMedico historial = new HistorialMedico( diagnostico,tratamiento,"20"  ,id);
-        listaHistoriales.add(historial);
+        HistorialMedico historial = new HistorialMedico( diagnostico,tratamiento,fecha  ,id);
+        Gestor.getInstancia().getListaHistoriales().add(historial);
 
 
         txtIdPaciente.clear();

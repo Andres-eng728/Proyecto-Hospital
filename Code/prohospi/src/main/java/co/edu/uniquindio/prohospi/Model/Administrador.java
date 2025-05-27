@@ -136,8 +136,8 @@ public class Administrador extends Persona {
         for (Paciente paciente : hospital.getPacientes()) {
             for (CitaMedica cita : paciente.getCitasProgramadas()) {
                 System.out.println("- Paciente: " + paciente.getNombre() +
-                        ", Médico: " + cita.getMedico().getNombre() +
-                        ", Fecha: " + cita.getFechaHora());
+                        ", Médico: " + cita.getMedico() +
+                        ", Fecha: " + cita.getFecha());
             }
         }
     }
