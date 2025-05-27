@@ -8,11 +8,17 @@ public class Sala {
         this.codigo = codigo;
         this.descripcion = descripcion;
     }
-
+    /**
+     * metodo que retorna codigo
+     * @return
+     */
     public String getCodigo() {
         return codigo;
     }
-
+    /**
+     * metodo que retorna descripcion
+     * @return
+     */
     public String getDescripcion() {
         return descripcion;
     }
