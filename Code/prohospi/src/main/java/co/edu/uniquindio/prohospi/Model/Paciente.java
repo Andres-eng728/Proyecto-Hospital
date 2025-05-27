@@ -60,7 +60,10 @@ public class Paciente extends Persona implements  InterfazHistorial {
     public HistorialMedico getHistorial() {
         return historial;
     }
-
+    /**
+     * metodo para asignar historial
+     * @param historial
+     */
     public void setHistorial(HistorialMedico historial) {
         this.historial = historial;
     }
@@ -71,7 +74,10 @@ public class Paciente extends Persona implements  InterfazHistorial {
     public String getUsuarioPaciente() {
         return usuarioPaciente;
     }
-
+    /**
+     * metodo para asignar un usuario paciente
+     * @param usuarioPaciente
+     */
     public void setUsuarioPaciente(String usuarioPaciente) {
         this.usuarioPaciente = usuarioPaciente;
     }
@@ -82,7 +88,10 @@ public class Paciente extends Persona implements  InterfazHistorial {
     public String getContrasenaPaciente() {
         return contrasenaPaciente;
     }
-
+    /**
+     * metodo para registrar la contraseña del paciente
+     * @param contrasenaPaciente
+     */
     public void setContrasenaPaciente(String contrasenaPaciente) {
         this.contrasenaPaciente = contrasenaPaciente;
     }
@@ -93,7 +102,10 @@ public class Paciente extends Persona implements  InterfazHistorial {
     public List<CitaMedica> getCitasProgramadas() {
         return citasProgramadas;
     }
-
+    /**
+     * metodo para asignar lista de citas programadas
+     * @param citasProgramadas
+     */
     public void setCitasProgramadas(List<CitaMedica> citasProgramadas) {
         this.citasProgramadas = citasProgramadas;
     }
@@ -104,7 +116,10 @@ public class Paciente extends Persona implements  InterfazHistorial {
     public List<String> getNotificaciones() {
         return notificaciones;
     }
-
+    /**
+     * metodo para registrar las notificaciones
+     * @param notificaciones
+     */
     public void setNotificaciones(List<String> notificaciones) {
         this.notificaciones = notificaciones;
     }
