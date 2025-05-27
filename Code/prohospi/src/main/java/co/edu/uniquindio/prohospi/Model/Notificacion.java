@@ -12,15 +12,24 @@ public class Notificacion {
         this.persona = persona;
         this.fecha = LocalDateTime.now();
     }
-
+    /**
+     * metodo que retorna mensaje
+     * @return
+     */
     public String getMensaje() {
         return mensaje;
     }
-
+    /**
+     * metodo que retorna persona
+     * @return
+     */
     public Persona getPersona() {
         return persona;
     }
-
+    /**
+     * metodo que retorna la fecha
+     * @return
+     */
     public LocalDateTime getFecha() {
         return fecha;
     }
