@@ -2,9 +2,8 @@
 package co.edu.uniquindio.prohospi.ViewController;
 
 import co.edu.uniquindio.prohospi.Model.Administrador;
-import co.edu.uniquindio.prohospi.Model.GestorPacientes;
+import co.edu.uniquindio.prohospi.Model.Gestor;
 import co.edu.uniquindio.prohospi.Model.Paciente;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -133,7 +132,7 @@ public class GestionPacientesViewController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarPacientesDesdeArchivoSerializado();
-        tbv_gestionpacientes.setItems(GestorPacientes.getInstancia().getPacientes());
+        tbv_gestionpacientes.setItems(Gestor.getInstancia().getPacientes());
 
         clm_idpaciente.setCellValueFactory(new PropertyValueFactory<>("identificacion"));
         clm_nombrepaciente.setCellValueFactory(new PropertyValueFactory<>("nombre"));
@@ -141,7 +140,7 @@ public class GestionPacientesViewController implements Initializable {
         clm_contrapaciente.setCellValueFactory(new PropertyValueFactory<>("contrasenaPaciente"));
         clm_correoP.setCellValueFactory(new PropertyValueFactory<>("correo"));
 
-        tbv_gestionpacientes.setItems(GestorPacientes.getInstancia().getPacientes());
+        tbv_gestionpacientes.setItems(Gestor.getInstancia().getPacientes());
 
         tbv_gestionpacientes.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null) {
@@ -152,7 +151,7 @@ public class GestionPacientesViewController implements Initializable {
                 txt_contraseniaP.setText(newSel.getContrasenaPaciente());
             }
         });
-        tbv_gestionpacientes.setItems(GestorPacientes.getInstancia().getPacientes());
+        tbv_gestionpacientes.setItems(Gestor.getInstancia().getPacientes());
     }
     @FXML
     void OnAgregarpaciente(ActionEvent event) {
@@ -165,7 +164,7 @@ public class GestionPacientesViewController implements Initializable {
         Paciente nuevoPaciente = new Paciente(nombre, identificacion, correo, contrasena, usuario);
 
 
-        GestorPacientes.getInstancia().getPacientes().add(nuevoPaciente);
+        Gestor.getInstancia().getPacientes().add(nuevoPaciente);
         guardarPacientesEnArchivoSerializado();
 
         limpiarCampos();
@@ -176,11 +175,11 @@ public class GestionPacientesViewController implements Initializable {
         Paciente seleccionado = tbv_gestionpacientes.getSelectionModel().getSelectedItem();
 
         if (seleccionado != null) {
-            GestorPacientes.getInstancia().eliminarPaciente(seleccionado);
+            Gestor.getInstancia().eliminarPaciente(seleccionado);
             tbv_gestionpacientes.getItems().remove(seleccionado);
 
             try {
-                ObservableList<Paciente> listaObservable = GestorPacientes.getInstancia().getPacientes();
+                ObservableList<Paciente> listaObservable = Gestor.getInstancia().getPacientes();
                 List<Paciente> pacientesSerializables = new ArrayList<>();
                 pacientesSerializables.addAll(listaObservable);
                 Persistencia.serializarObjeto("Data\\BaseDatos", pacientesSerializables);
@@ -216,10 +215,10 @@ public class GestionPacientesViewController implements Initializable {
 
     }
     private void guardarPacientesEnArchivoSerializado () {
-        System.out.println("Pacientes en lista: " + GestorPacientes.getInstancia().getPacientes().size());
+        System.out.println("Pacientes en lista: " + Gestor.getInstancia().getPacientes().size());
 
         try {
-            ObservableList<Paciente> listaObservable = GestorPacientes.getInstancia().getPacientes();
+            ObservableList<Paciente> listaObservable = Gestor.getInstancia().getPacientes();
             List<Paciente> pacientesSerializables = new ArrayList<>();
             pacientesSerializables.addAll(listaObservable);
             Persistencia.serializarObjeto("Data\\BaseDatos", pacientesSerializables);            System.out.println("Pacientes guardados en Base datos.txt");
@@ -233,8 +232,8 @@ public class GestionPacientesViewController implements Initializable {
         try {
             Object obj = Persistencia.deserializarObjeto("Data\\BaseDatos.txt");
             if (obj instanceof ArrayList<?>) {
-                GestorPacientes.getInstancia().getPacientes().clear();
-                GestorPacientes.getInstancia().getPacientes().addAll((ArrayList<Paciente>) obj);
+                Gestor.getInstancia().getPacientes().clear();
+                Gestor.getInstancia().getPacientes().addAll((ArrayList<Paciente>) obj);
                 System.out.println("Pacientes cargados desde Base datos.txt");
             }
         } catch (Exception e) {

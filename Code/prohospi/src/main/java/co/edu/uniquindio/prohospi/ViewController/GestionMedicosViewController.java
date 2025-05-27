@@ -1,6 +1,7 @@
 package co.edu.uniquindio.prohospi.ViewController;
 
 import co.edu.uniquindio.prohospi.Model.Administrador;
+import co.edu.uniquindio.prohospi.Model.Gestor;
 import co.edu.uniquindio.prohospi.Model.Medico;
 import co.edu.uniquindio.prohospi.Model.Paciente;
 import javafx.collections.FXCollections;
@@ -19,6 +20,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GestionMedicosViewController implements Initializable {
@@ -97,7 +100,7 @@ public class GestionMedicosViewController implements Initializable {
 
 
     private Administrador administrador;
-    private ObservableList<Medico> listMedicos = FXCollections.observableArrayList();
+
 
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
@@ -135,9 +138,11 @@ public class GestionMedicosViewController implements Initializable {
             seleccionado.setEspecialidad(txt_especialidadM.getText());
 
             tbv_gestionMedico.refresh(); // Refresca la tabla para mostrar los cambios
-            mostrarAlerta( "Actualizado","Paciente actualizado exitosamente");
+            mostrarAlerta( "Actualizado","Medico actualizado exitosamente");
+
+            guardarMedicosEnArchivoSerializado();
         } else {
-            mostrarAlerta("Error", "Debe seleccionar un paciente para actualizar");
+            mostrarAlerta("Error", "Debe seleccionar un Medico para actualizar");
         }
 
     }
@@ -153,11 +158,13 @@ public class GestionMedicosViewController implements Initializable {
 
         Medico nuevoMedico = new Medico(nombre, identificacion, correo, contrasenaMedico, usuarioMedico, especialidad);
 
-        listMedicos.add(nuevoMedico);
-
+        Gestor.getInstancia().getListMedicos().add(nuevoMedico);
+        guardarMedicosEnArchivoSerializado();
 
         limpiarCampos();
         mostrarAlerta("Agregado","Paciente agregado exitosamente");
+
+        guardarMedicosEnArchivoSerializado();
     }
 
     @FXML
@@ -165,10 +172,22 @@ public class GestionMedicosViewController implements Initializable {
         Medico seleccionado = tbv_gestionMedico.getSelectionModel().getSelectedItem();
 
         if (seleccionado != null) {
-            listMedicos.remove(seleccionado);
-            mostrarAlerta("Eliminado", "Paciente eliminado exitosamente");
+            Gestor.getInstancia().eliminarMedico(seleccionado);
+            tbv_gestionMedico.getItems().remove(seleccionado);
+            guardarMedicosEnArchivoSerializado();
+            try {
+                ObservableList<Medico> listaObservableM = Gestor.getInstancia().getListMedicos();
+                List<Medico> medicosSrializablesrializables = new ArrayList<>();
+                medicosSrializablesrializables.addAll(listaObservableM);
+                Persistencia.serializarObjeto("Data\\BaseDatosMedicos.txt", medicosSrializablesrializables);
+
+                mostrarAlerta("Eliminado", "Medico eliminado exitosamente");
+            } catch (IOException e) {
+                mostrarAlerta("Error", "Error al guardar los datos: " + e.getMessage());
+                e.printStackTrace();
+            }
         } else {
-            mostrarAlerta("Error","Debe seleccionar un paciente para eliminar");
+            mostrarAlerta("Error", "Debe seleccionar un Medico para eliminar");
         }
         limpiarCampos();
     }
@@ -191,6 +210,9 @@ public class GestionMedicosViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        cargarMedicosDesdeArchivoSerializado();
+        tbv_gestionMedico.setItems(Gestor.getInstancia().getListMedicos());
+
         clm_idMedico.setCellValueFactory(new PropertyValueFactory<>("identificacion"));
         clm_nombreMedico.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         clm_usuarioMedico.setCellValueFactory(new PropertyValueFactory<>("usuarioMedico"));
@@ -198,8 +220,8 @@ public class GestionMedicosViewController implements Initializable {
         clm_correoM.setCellValueFactory(new PropertyValueFactory<>("correo"));
         clm_escialidadM.setCellValueFactory(new PropertyValueFactory<>("especialidad"));
 
-        tbv_gestionMedico.setItems(listMedicos);
-        listMedicos.add(new Medico("Andrés", "123", "andres@email.com", "Citugia", "andresu14","1234141"));
+        tbv_gestionMedico.setItems(Gestor.getInstancia().getListMedicos());
+
         tbv_gestionMedico.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
             if (newSel != null) {
                 txt_nombreMedico.setText(newSel.getNombre());
@@ -210,5 +232,33 @@ public class GestionMedicosViewController implements Initializable {
                 txt_especialidadM.setText(newSel.getEspecialidad());
             }
         });
+    }
+
+    private void guardarMedicosEnArchivoSerializado () {
+        System.out.println("Medicos en lista: " + Gestor.getInstancia().getListMedicos().size());
+
+        try {
+            ObservableList<Medico> listaObservable = Gestor.getInstancia().getListMedicos();
+            List<Medico> medicosSerializables = new ArrayList<>();
+            medicosSerializables.addAll(listaObservable);
+            Persistencia.serializarObjetoMedico("Data\\BaseDatosMedicos", medicosSerializables);            System.out.println("Medicos guardados en Base datos.txt");
+        } catch (IOException e) {
+            System.err.println("Error al guardar medicos:");
+            e.printStackTrace();
+        }
+    }
+
+    private void cargarMedicosDesdeArchivoSerializado() {
+        try {
+            Object obj = Persistencia.deserializarObjetoMedico("Data\\BaseDatosMedicos.txt");
+            if (obj instanceof ArrayList<?>) {
+                Gestor.getInstancia().getListMedicos().clear();
+                Gestor.getInstancia().getListMedicos().addAll((ArrayList<Medico>) obj);
+                System.out.println("Medicos cargados desde Base datos.txt");
+            }
+        } catch (Exception e) {
+            System.err.println("Error al cargar Medicos:");
+            e.printStackTrace();
+        }
     }
 }

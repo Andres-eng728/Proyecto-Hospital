@@ -1,10 +1,12 @@
 package co.edu.uniquindio.prohospi.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Medico extends Persona implements InterfazHistorial {
+public class Medico extends Persona implements InterfazHistorial, Serializable {
     private String especialidad;
+    private static final long serialVersionUID = 1L;
     private String usuarioMedico;
     private String contrasenaMedico;
     private List<Paciente> pacientes;
@@ -21,7 +23,7 @@ public class Medico extends Persona implements InterfazHistorial {
         this.notificaciones = new ArrayList<>();
     }
 
-
+public Medico() {}
     /**
      * Metodo para ver los pacientes
      */
