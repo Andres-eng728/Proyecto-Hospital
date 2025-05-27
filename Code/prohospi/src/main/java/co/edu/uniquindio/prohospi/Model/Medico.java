@@ -42,7 +42,10 @@ public class Medico extends Persona implements InterfazHistorial {
     public String getEspecialidad() {
         return especialidad;
     }
-
+    /**
+     * Metodo para asignar especialidad
+     * @param especialidad
+     */
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
@@ -53,7 +56,10 @@ public class Medico extends Persona implements InterfazHistorial {
     public String getContrasenaMedico() {
         return contrasenaMedico;
     }
-
+    /**
+     * Metodo para asignar especialidad
+     * @param especialidad
+     */
     public void setContrasenaMedico(String contrasenaMedico) {
         this.contrasenaMedico = contrasenaMedico;
     }
@@ -64,7 +70,10 @@ public class Medico extends Persona implements InterfazHistorial {
     public String getUsuarioMedico() {
         return usuarioMedico;
     }
-
+    /**
+     * Metodo para asignar un usuario medico
+     * @param usuarioMedico
+     */
     public void setUsuarioMedico(String usuarioMedico) {
         this.usuarioMedico = usuarioMedico;
     }
@@ -75,7 +84,10 @@ public class Medico extends Persona implements InterfazHistorial {
     public List<Paciente> getPacientes() {
         return pacientes;
     }
-
+    /**
+     * metodo para asignar la lista de pacientes
+     * @param pacientes
+     */
     public void setPacientes(List<Paciente> pacientes) {
         this.pacientes = pacientes;
     }
@@ -86,7 +98,10 @@ public class Medico extends Persona implements InterfazHistorial {
     public List<String> getNotificaciones() {
         return notificaciones;
     }
-
+    /**
+     * metodo para asignar las notificaciones
+     * @param notificaciones
+     */
     public void setNotificaciones(List<String> notificaciones) {
         this.notificaciones = notificaciones;
     }
@@ -97,7 +112,10 @@ public class Medico extends Persona implements InterfazHistorial {
     public List<Horario> getHorariosConsulta() {
         return horariosConsulta;
     }
-
+    /**
+     * metodo para asignar horarios consulta
+     * @param horariosConsulta
+     */
     public void setHorariosConsulta(List<Horario> horariosConsulta) {
         this.horariosConsulta = horariosConsulta;
     }
