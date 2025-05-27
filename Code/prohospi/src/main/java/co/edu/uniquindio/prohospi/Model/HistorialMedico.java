@@ -56,11 +56,17 @@ public class HistorialMedico {
     public List<String> getEntradas() {
         return entradas;
     }
-
+    /**
+     * Metodo para asignar una entrada
+     * @param entradas
+     */
     public void setEntradas(List<String> entradas) {
         this.entradas = entradas;
     }
-
+    /**
+     * Metodo para asignar antecedentes
+     * @param antecedentes
+     */
     public void setAntecedentes(List<String> antecedentes) {
         this.antecedentes = antecedentes;
     }
@@ -71,7 +77,10 @@ public class HistorialMedico {
     public String getDiagnostico() {
         return diagnostico;
     }
-
+    /**
+     * Metodo para asignar el diagnostico
+     * @param diagnostico
+     */
     public void setDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
@@ -82,7 +91,10 @@ public class HistorialMedico {
     public String getTratamiento() {
         return tratamiento;
     }
-
+    /**
+     * Metodo para asignar tratamiento
+     * @param tratamiento
+     */
     public void setTratamiento(String tratamiento) {
         this.tratamiento = tratamiento;
     }
@@ -93,7 +105,10 @@ public class HistorialMedico {
     public String getFecha() {
         return fecha;
     }
-
+    /**
+     * Metodo para asignar fecha
+     * @param fecha
+     */
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
@@ -104,7 +119,10 @@ public class HistorialMedico {
     public String getIdPaciente() {
         return idPaciente;
     }
-
+    /**
+     * Metodo para asignar id a un paciente
+     * @param idPaciente
+     */
     public void setIdPaciente(String idPaciente) {
         this.idPaciente = idPaciente;
     }
