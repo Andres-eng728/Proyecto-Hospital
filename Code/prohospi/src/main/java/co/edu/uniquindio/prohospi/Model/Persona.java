@@ -13,13 +13,9 @@ public abstract class Persona implements Serializable {
         this.identificacion = identificacion;
         this.correo = correo;
     }
-    public Persona() {
-        // Constructor vacío requerido para deserialización
-    }
+    public Persona(){}
 
-    public String getNombre(){
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
     public String getIdentificacion() { return identificacion; }
     public String getCorreo() { return correo; }
 

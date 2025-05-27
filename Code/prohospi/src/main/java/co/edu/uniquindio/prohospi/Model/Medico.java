@@ -22,76 +22,131 @@ public class Medico extends Persona implements InterfazHistorial {
     }
 
 
-
+    /**
+     * Metodo para ver los pacientes
+     */
     public void verPacientes() {
         System.out.println("Consultando lista de pacientes del médico " + nombre);
     }
-
+    /**
+     * metodo para ver el historial
+     */
     @Override
     public void verHistorial() {
         System.out.println("Acceso a historial médico por el doctor: " + nombre);
     }
-
+    /**
+     * Metodo para retornar la especialidad
+     * @return
+     */
     public String getEspecialidad() {
         return especialidad;
     }
-
+    /**
+     * Metodo para asignar especialidad
+     * @param especialidad
+     */
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
-
+    /**
+     * metodo para obtener la contraseña del medico
+     * @return
+     */
     public String getContrasenaMedico() {
         return contrasenaMedico;
     }
-
+    /**
+     * Metodo para asignar especialidad
+     * @param especialidad
+     */
     public void setContrasenaMedico(String contrasenaMedico) {
         this.contrasenaMedico = contrasenaMedico;
     }
-
+    /**
+     * Metodo para retornar el usuario medico
+     * @return
+     */
     public String getUsuarioMedico() {
         return usuarioMedico;
     }
-
+    /**
+     * Metodo para asignar un usuario medico
+     * @param usuarioMedico
+     */
     public void setUsuarioMedico(String usuarioMedico) {
         this.usuarioMedico = usuarioMedico;
     }
-
+    /**
+     * metodo para retornar la lista de los pacientes
+     * @return
+     */
     public List<Paciente> getPacientes() {
         return pacientes;
     }
-
+    /**
+     * metodo para asignar la lista de pacientes
+     * @param pacientes
+     */
     public void setPacientes(List<Paciente> pacientes) {
         this.pacientes = pacientes;
     }
-
+    /**
+     * metodo para obtener las notificaciones
+     * @return
+     */
     public List<String> getNotificaciones() {
         return notificaciones;
     }
-
+    /**
+     * metodo para asignar las notificaciones
+     * @param notificaciones
+     */
     public void setNotificaciones(List<String> notificaciones) {
         this.notificaciones = notificaciones;
     }
-
+    /**
+     * metodo para obtener los horarios de consulta
+     * @return
+     */
     public List<Horario> getHorariosConsulta() {
         return horariosConsulta;
     }
-
+    /**
+     * metodo para asignar horarios consulta
+     * @param horariosConsulta
+     */
     public void setHorariosConsulta(List<Horario> horariosConsulta) {
         this.horariosConsulta = horariosConsulta;
     }
-
+    /**
+     * Metodo para agregar paciente
+     * @param paciente
+     */
     public void agregarPaciente(Paciente paciente) {
         pacientes.add(paciente);
     }
-
+    /**
+     * Metodo para registrar diagnostico
+     * @param paciente
+     * @param diagnostico
+     */
     public void registrarDiagnostico(Paciente paciente, String diagnostico) {
         paciente.getHistorial().actualizarHistorial("Diagnóstico: " + diagnostico);
     }
-
+    /**
+     * Metodo para registrar tratamiento
+     * @param paciente
+     * @param tratamiento
+     */
     public void registrarTratamiento(Paciente paciente, String tratamiento) {
         paciente.getHistorial().actualizarHistorial("Tratamiento: " + tratamiento);
     }
-
+    /**
+     * metodo para asignar horario
+     * @param dia
+     * @param hora
+     */
     public void asignarHorario(String dia, String hora) {
         horariosConsulta.add(new Horario(dia, hora));
     }

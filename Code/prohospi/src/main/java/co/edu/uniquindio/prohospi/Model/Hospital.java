@@ -34,11 +34,17 @@ public class Hospital {
     public void asignarPacienteAMedico(Paciente paciente, Medico medico) {
         medico.agregarPaciente(paciente);
     }
-
+    /**
+     * Metodo para retornar la lista de medicos
+     * @return
+     */
     public List<Medico> getMedicos() {
         return medicos;
     }
-
+    /**
+     * Metodo para retornar la lista de pacientes
+     * @return
+     */
     public List<Paciente> getPacientes() {
         return pacientes;
     }

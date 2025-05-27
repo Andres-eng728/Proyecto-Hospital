@@ -59,43 +59,73 @@ public class Paciente extends Persona implements  InterfazHistorial, Serializabl
         System.out.println("Mostrando historial médico de: " + nombre);
         historial.mostrar();
     }
-
+    /**
+     * metodo que devuelve el historial medico
+     * @return
+     */
     public HistorialMedico getHistorial() {
         return historial;
     }
-
+    /**
+     * metodo para asignar historial
+     * @param historial
+     */
     public void setHistorial(HistorialMedico historial) {
         this.historial = historial;
     }
-
+    /**
+     * metodo que retorna el usuario paciente
+     * @return
+     */
     public String getUsuarioPaciente() {
         return usuarioPaciente;
     }
-
+    /**
+     * metodo para asignar un usuario paciente
+     * @param usuarioPaciente
+     */
     public void setUsuarioPaciente(String usuarioPaciente) {
         this.usuarioPaciente = usuarioPaciente;
     }
-
+    /**
+     * metodo que retorna la contraseña del paciente
+     * @return
+     */
     public String getContrasenaPaciente() {
         return contrasenaPaciente;
     }
-
+    /**
+     * metodo para registrar la contraseña del paciente
+     * @param contrasenaPaciente
+     */
     public void setContrasenaPaciente(String contrasenaPaciente) {
         this.contrasenaPaciente = contrasenaPaciente;
     }
-
+    /**
+     * metodo que retorna las citas programadas
+     * @return
+     */
     public List<CitaMedica> getCitasProgramadas() {
         return citasProgramadas;
     }
-
+    /**
+     * metodo para asignar lista de citas programadas
+     * @param citasProgramadas
+     */
     public void setCitasProgramadas(List<CitaMedica> citasProgramadas) {
         this.citasProgramadas = citasProgramadas;
     }
-
+    /**
+     * metodo que retorna las notificaciones
+     * @return
+     */
     public List<String> getNotificaciones() {
         return notificaciones;
     }
-
+    /**
+     * metodo para registrar las notificaciones
+     * @param notificaciones
+     */
     public void setNotificaciones(List<String> notificaciones) {
         this.notificaciones = notificaciones;
     }
